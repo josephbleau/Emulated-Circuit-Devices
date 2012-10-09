@@ -19,7 +19,7 @@ What are the requirements to build it?
 
 How do I build it?
 	If you want to build the decoder stand-alone, make sure your working directory is the 'src' directory' and run 'g++ decoder.cpp emucirc.cpp -o decoder'
-	If you want to build all of the stand-alone devices at once, including the unit tests, I've provided a build_examples.sh script. You can run it by entering './build_examples' The resulting files can be found in your the 'bin' folder.
+	If you want to build all of the stand-alone devices at once, including the unit tests, I've provided a build_examples.sh script. You can run it by entering './build_examples' The resulting files can be found in the resulting 'bin' folder.
 	
 How do I use the standalones?
 	If you've successfully built one of the stand-alones you can then run it from command-line.
