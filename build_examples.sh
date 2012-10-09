@@ -1,3 +1,4 @@
+mkdir -p bin 
 echo "Compiling andgate..."
 g++ src/andgate.cpp src/emucirc.cpp -o bin/andgate
 echo "Compiling orgate..."
