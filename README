@@ -1,0 +1,53 @@
+EMULATED CIRCUITS
+A PROJECT FOR COSC 221
+
+A project to emulate simple hardware logic circuit components in software.
+
+Currently emulated:
+	andgate (any-to-1)
+	orgate (any-to-1)
+	notgate (any-to-any)
+	decoder (any-to-n^(any))
+	encoder (any-to-log2(any))
+	muxer (any-to-1, w/ appropriately sized control channel)
+
+How can I get it?
+	First, ensure that 'git' is installed on your system and then run the command: 'git clone https://github.com/josephbleau/Emulated-Circuit-Devices.git'
+
+What are the requirements to build it?
+	Only the standard C++ Libraries are used.
+
+How do I build it?
+	If you want to build the decoder stand-alone, make sure your working directory is the 'src' directory' and run 'g++ decoder.cpp emucirc.cpp -o decoder'
+	If you want to build all of the stand-alone devices at once, including the unit tests, I've provided a build_examples.sh script. You can run it by entering './build_examples' The resulting files can be found in your the 'bin' folder.
+	
+How do I use the standalones?
+	If you've successfully built one of the stand-alones you can then run it from command-line.
+
+	Example usage:
+		./decoder 10
+		Output: 0100
+
+		./muxer 010 01
+		Output: 1
+
+		./encdoder blahblhf 12 312 hahayousuck
+		Output: Usage: encoder BITS
+
+How do I use it in my code?
+	The only two files you need from the 'src' directory are 'emucirc.h' and 'emucirc.cpp'. Move these into your project.
+	
+	std::vector<bool> is the transport type, with the leftmost binary values being inserted first and the rightmost last. Every component will return a std::vector<bool> even if the bits being returned are none (it will just be an empty container.) 
+
+	Example usage:
+
+		std::vector<bool> input(2,0);
+		input[0] = 1; 
+		input[1] = 0;
+
+		std::vector<bool> output = decoder(input);
+
+	In this example the decoder would return a vector bool which represented the value '0100.'
+
+Other notes for programmers:
+	There is an incredibly hilariously nasty function used for creating one-line stand-alone applications seen in 'decoder.cpp' and others. Feel free to use this at your own discretion. It's not supported, but is in there for my own convenience.	
